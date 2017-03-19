@@ -7,7 +7,11 @@
 /.idea
 /log
 /tmp
+.getkeep
 
 # Configurations database
 /config/database.yml
 /db/schema.rb
+
+# For bug
+.byebug_history
