@@ -57,7 +57,7 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Dir[Rails.root.join("features/support/helpers/**/*.rb")].each { |f| require f }
-Cucumber::Rails::World.use_transactional_fixtures = true
+Cucumber::Rails::World.use_transactional_tests = true
 
 World(Helpers)
 World(Helpers::Json)

@@ -4,6 +4,13 @@ Given(/^the following "(.*?)":$/) do |model, table|
   PaperTrail.enabled = true
 end
 
+Given(/^the current user is:$/) do |table|
+  rows = table.rows_hash
+  rows.each { |key, value| rows[key] = (value.match(/^\[.*\]$/) ? eval(value) : value) }
+  command = AuthenticateUser.call(rows[:email], rows[:password])
+  header "Authorization", command.result
+end
+
 Given(/^the following fake "(.*?)":$/) do |model, table|
   factory_girl(model, table.hashes)
 end
