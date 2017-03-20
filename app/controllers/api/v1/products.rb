@@ -25,9 +25,9 @@ module API
         end
 
         post do
-          product = Product.create!({name: params[:name]})
-          brand = Brand.find_by(id: params[:brand_id])
-          brand.products << product
+          product = Product.new(name: params[:name])
+          product.brand_id = params[:brand_id]
+          product.save!
 
           present product, with: Entities::Product
         end
