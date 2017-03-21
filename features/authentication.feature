@@ -24,5 +24,5 @@ Feature: Authentication
     Then the response status should be "201"
     And the JSON response should be:
       """
-        {"auth_token": "%r{[a-zA-Z0-9.-]+}"}
+        {"auth_token": "%r{[a-zA-Z0-9._-]+}"}
       """

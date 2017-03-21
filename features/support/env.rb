@@ -59,5 +59,14 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Dir[Rails.root.join("features/support/helpers/**/*.rb")].each { |f| require f }
 Cucumber::Rails::World.use_transactional_tests = true
 
+Before do |scenario|
+  DeferredGarbageCollection.start
+  @current_scenario = { file: scenario.location.file, name: scenario.name }
+end
+
+After do |scenario|
+  DeferredGarbageCollection.reconsider
+end
+
 World(Helpers)
 World(Helpers::Json)

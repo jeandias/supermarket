@@ -8,7 +8,7 @@ if ENV["DEBUG"].present?
       rescue
         pretty = body
       end
-      File.open(File.join(Rails.root, "tmp", "endpoint-response-#{@current_scenario[:title].parameterize}.json"), "w") { |file| file.write(pretty) }
+      File.open(File.join(Rails.root, "tmp", "endpoint-response-#{@current_scenario[:name].parameterize}.json"), "w") { |file| file.write(pretty) }
       print "\n\n\e[33mDEBUG: The last response was written in \"last_response-*.json\"\e[0m"
     end
   end
